@@ -1,0 +1,39 @@
+import turtle
+
+def draw_pifagoras_tree(t, branch_length, level):
+    if level == 0:
+        return
+    t.forward(branch_length * level)
+    t.left(45)
+    draw_pifagoras_tree(t, branch_length, level-1)
+    t.right(90)
+    draw_pifagoras_tree(t, branch_length, level-1)
+    t.left(45)
+    t.backward(branch_length * level)
+
+def main():
+    level = int(input("Введіть рівень рекурсії: "))
+
+    # Налаштування вікна та черепахи
+    screen = turtle.Screen()
+    screen.setup(width=800, height=600)
+    screen.bgcolor("white")
+    screen.title("Фрактал 'Дерево Піфагора'")
+    
+    tree_pen = turtle.Turtle()
+    tree_pen.color("green")
+    tree_pen.width(2)
+    tree_pen.setheading(90)
+    tree_pen.speed("fastest")
+
+    # Початок малювання фракталу
+    tree_pen.penup()
+    tree_pen.goto(0, -250)
+    tree_pen.pendown()
+    draw_pifagoras_tree(tree_pen, 10, level)
+
+    # Завершення програми при кліку на вікно
+    screen.mainloop()
+
+if __name__ == "__main__":
+    main()
