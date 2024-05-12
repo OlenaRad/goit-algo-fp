@@ -63,7 +63,7 @@ def draw_tree_bfs(root):
                 r = 0.5 * (current_layer + 1)
                 pos[node.right] = (r, -layer)
                 queue.append((node.right, current_layer + 1))
-        layer += 1
+            layer += 1
 
     colors = [node[1]['color'] for node in tree.nodes(data=True)]
     labels = {node[0]: node[1]['label'] for node in tree.nodes(data=True)}
@@ -71,6 +71,7 @@ def draw_tree_bfs(root):
     plt.figure(figsize=(10, 6))
     nx.draw(tree, pos=pos, labels=labels, arrows=False, node_size=2500, node_color=colors)
     plt.show()
+
 
 # Приклад використання:
 root = Node(0)
